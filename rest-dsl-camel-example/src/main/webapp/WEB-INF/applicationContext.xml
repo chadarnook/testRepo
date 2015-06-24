@@ -20,7 +20,19 @@
 <!-- 	<import resource="classpath:META-INF/cxf/cxf.xml" /> -->
 <!-- 	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" /> -->
 
+	<context:property-placeholder location="classpath:default.properties" />
+
 	<camelContext xmlns="http://camel.apache.org/schema/spring">
 		<package>com.accenture.camel</package>
 	</camelContext>
+	<bean id="configuration" class="com.accenture.conf.Configuration">
+		<property name="property" value="${noprofile.test.property}"/>
+	</bean>
+	
+	
+	<beans profile="unittest">
+		<bean id="configuration" class="com.accenture.conf.Configuration">
+		<property name="property" value="${profile.test.property}"/>
+	</bean>
+	</beans>
 </beans>
