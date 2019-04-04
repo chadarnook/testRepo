@@ -43,6 +43,7 @@ public class RoutesTest extends CamelSpringTestSupport{
 	
 	@After
 	public void tearDown() throws Exception {
+		//server
 		server.stop();
 	}
 
