@@ -75,6 +75,18 @@ public class RoutesTest extends CamelSpringTestSupport{
 //			
 //		};
 //	}
+
+	@Test
+	public void testAssert() {
+		System.out.println("--------------------- " + conf.getProperty());
+//		WebClient client = WebClient.create("http://localhost:8080/test/route");
+		WebClient client = WebClient.create("http://localhost:8080/rest-dsl-camel-example/rest/test/route").header("hotelId", 1);
+		Response res = client.get();
+		Assert.assertEquals(200, res.getStatus());
+//		String res = template.requestBody("http://localhost:8080/test/route", null, String.class);
+//		Assert.assertEquals("200", res);
+	}
+	
 	@Test
 	public void testRoutes() throws InterruptedException {
 		System.out.println("--------------------- " + conf.getProperty());
